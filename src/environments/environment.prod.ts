@@ -1,0 +1,6 @@
+declare var require: any;
+export const environment = {
+  production: true,
+  apiUrl: 'http://127.0.0.1:8888/',
+  version: require('../../package.json').version  
+};

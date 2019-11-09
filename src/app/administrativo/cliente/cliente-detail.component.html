@@ -1,0 +1,51 @@
+﻿<as-breadcrumb [objeto]="breadcrumb">
+</as-breadcrumb>
+<form [formGroup]="clienteForm">
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="ui-fluid">
+                <div class="ui-g">                 
+                    <fieldset class="fieldset box">
+                        <legend>Dados Gerais</legend>
+                        <div class="informacoesGerais box-body">                 
+                            <div class="ui-g-12 ui-md-3">
+                                <div class="form-group">
+                                    <label for="cpf"> CPF </label>
+                                    <input id="cpf" type="text" 
+                                                     formControlName="cpf"
+                                                     class="form-control input"
+                                                     [attr.maxlength]="14" 
+                                                     name="cpf" 
+                                                     required>
+                                </div>
+                            </div>
+
+                            <div class="ui-g-12 ui-xl-3 ui-lg-3 ui-md-3">
+                                <div class="form-group">
+                                    <label for="nome"> Nome </label>
+                                    <input asInputText="nome" id="nome" type="text" formControlName="nome"
+                                        class="form-control input" maxlength="100" name="nome" required>
+                                </div>
+                            </div>
+
+                            <div class="ui-g-12 ui-xl-3 ui-lg-3 ui-md-3">
+                                <div class="form-group">
+                                    <label for="telefone"> telefone </label>
+                                    <input id="telefone" type="text" formControlName="telefone"
+                                        class="form-control input" maxlength="20" name="telefone">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </fieldset>
+                </div>   
+            </div>
+            <div class="panel-footer">
+                <button type="button" class="btn pull-right btnSalvar" [disabled]="!clienteForm.valid" (click)="save()">Salvar</button>
+                <button type="button" class="btn pull-left btnVoltar" (click)="cancel()">Voltar</button>
+                <button type="button" class="btn pull-left btnLimpar" (click)="limpar()">Limpar</button>
+            </div>
+        </div>
+    </div>
+</form>

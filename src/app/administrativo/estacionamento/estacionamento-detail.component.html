@@ -1,0 +1,104 @@
+﻿<as-breadcrumb [objeto]="breadcrumb">
+</as-breadcrumb>
+<form [formGroup]="estacionamentoForm">
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="ui-fluid">
+                <div class="ui-g">
+                    <fieldset class="fieldset box">
+                        <legend>Dados Gerais</legend>
+                        <div class="informacoesGerais box-body">
+
+                            <div class="ui-sm-12 ui-md-4 ui-lg-3">
+                                <div class="form-group ">
+                                    <label> Pátio </label>
+                                    <p-autoComplete [suggestions]="_patioService.pageResult.content"
+                                        (completeMethod)="pesquisarPatios($event)" field="descricao" [minLength]="1"
+                                        (onSelect)="onSelectPatio($event)" formControlName="patioDescricao" [size]="30"
+                                        [dropdown]=true required>
+                                    </p-autoComplete>
+                                </div>
+                            </div>
+
+                            <div class="ui-sm-12 ui-md-4 ui-lg-3">
+                                <div class="form-group ">
+                                    <label> Cliente </label>
+                                    <p-autoComplete [suggestions]="_clienteService.pageResult.content"
+                                        (completeMethod)="pesquisarClientes($event)" field="nome" [minLength]="1"
+                                        (onSelect)="onSelectCliente($event)" formControlName="clienteNome" [size]="30"
+                                        [dropdown]=true required>
+                                    </p-autoComplete>
+                                </div>
+                            </div>
+
+                            <div class="ui-sm-12 ui-md-4 ui-lg-3">
+                                <div class="form-group ">
+                                    <label> Veiculo </label>
+                                    <p-autoComplete [suggestions]="_veiculoService.pageResult.content"
+                                        (completeMethod)="pesquisarVeiculos($event)" field="modelo" [minLength]="1"
+                                        (onSelect)="onSelectVeiculo($event)" formControlName="veiculoModelo" [size]="30"
+                                        [dropdown]=true required>
+                                    </p-autoComplete>
+                                </div>
+                            </div>
+
+                            <div class="ui-g-12 ui-md-2 form-group">
+                                <label for="dataHoraChegada"> Data Hora Chegada </label>
+                                <p-calendar showTime="true"
+                                            hourFormat="24"
+                                            dateFormat="dd/mm/yy"
+                                            formControlName="dataHoraChegada"
+                                            [(ngModel)]="model.dataHoraChegada"
+                                            [locale]="pt_BR" [showIcon]="true">
+                                </p-calendar>
+                            </div>
+
+
+                            <div class="ui-g-12 ui-md-2 form-group">
+                                <label for="dataHoraSaida"> Data Hora Saida </label>
+                                <p-calendar showTime="true"
+                                            hourFormat="24"
+                                            dateFormat="dd/mm/yy"
+                                            formControlName="dataHoraSaida"                                
+                                            [(ngModel)]="model.dataHoraSaida" [locale]="pt_BR" [showIcon]="true">
+                                </p-calendar>
+                            </div>
+
+
+                            <div class="ui-g-12 ui-xl-3 ui-lg-3 ui-md-3">
+                                <div class="form-group" >
+                                    <label for="tempoPermanencia"> Tempo Permanencia </label>
+                                    <input
+                                        asInputText="tempoPermanencia"
+                                        id="tempoPermanencia" type="text"
+                                        formControlName="tempoPermanencia" class="form-control input-desabilitado" maxlength="100"
+                                        name="nome" 
+                                        disabled
+                                        >
+                                </div>
+                            </div>
+
+                            <div class="ui-g-12 ui-xl-3 ui-lg-3 ui-md-3">
+                                <div class="form-group" >
+                                    <label for="valor"> Valor  </label>
+                                    <input 
+                                        id="valor" type="text" formControlName="valor"
+                                        class="form-control input-desabilitado" maxlength="20" name="valor"
+                                        disabled>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button type="button" class="btn pull-right btnSalvar" [disabled]="!estacionamentoForm.valid"
+                    (click)="save()">Salvar</button>
+                <button type="button" class="btn pull-left btnVoltar" (click)="cancel()">Voltar</button>
+                <button type="button" class="btn pull-left btnLimpar" (click)="limpar()">Limpar</button>
+            </div>
+        </div>
+    </div>
+</form>
