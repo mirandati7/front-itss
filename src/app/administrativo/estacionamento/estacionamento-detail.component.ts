@@ -14,6 +14,7 @@ import { PatioService } from '../patio/patio.service';
 import { VeiculoService } from '../veiculo/veiculo.service';
 import { Estacionamento } from './estacionamento.model';
 import { EstacionamentoService } from './estacionamento.service';
+import { ValidationService } from '../../shared/validacao/validation.service';
 
 @Component({
     templateUrl: './estacionamento-detail.component.html',
@@ -72,17 +73,19 @@ export class EstacionamentoDetailComponent<T extends GenericModel> implements On
                 var patioObj: any = new Object();
 				patioObj.id = this.model.patioId;
 				patioObj.descricao = this.model.patioDescricao;
-                this.estacionamentoForm.get('patioDescricao').setValue(patioObj);
+                this.onSelectPatio(patioObj);
                 
                 var veiculoObj: any = new Object();
 				veiculoObj.id = this.model.veiculoId;
-				veiculoObj.modelo = this.model.veiculoModelo;
-                this.estacionamentoForm.get('veiculoModelo').setValue(veiculoObj);
+                veiculoObj.modelo = this.model.veiculoModelo;
+                this.onSelectVeiculo(veiculoObj);
                 
                 var clienteObj: any = new Object();
 				clienteObj.id = this.model.clienteId;
-				clienteObj.nome = this.model.clienteNome;
-                this.estacionamentoForm.get('clienteNome').setValue(clienteObj);
+                clienteObj.nome = this.model.clienteNome;
+                this.onSelectCliente(clienteObj);
+
+
                 this.estacionamentoForm.get('tempoPermanencia').setValue(this.model.tempoPermanencia);
                 this.estacionamentoForm.get('valor').setValue(this.model.valor);
                 this.estacionamentoForm.get('dataHoraChegada').setValue(this.model.dataHoraChegada);
@@ -100,11 +103,11 @@ export class EstacionamentoDetailComponent<T extends GenericModel> implements On
         this.estacionamentoForm = this.fb.group({
             'id': [''],
             'patioId': [''],
-            'patioDescricao': [''],
+            'patioDescricao': ['',ValidationService.autocompleteValidator],
             'veiculoId': [''] ,
-            'veiculoModelo': [''],   
+            'veiculoModelo': ['',ValidationService.autocompleteValidator],   
             'clienteId': [''],      
-            'clienteNome': [''],  
+            'clienteNome': ['',ValidationService.autocompleteValidator],  
             'tempoPermanencia': [''],
             'valor': [''],   
             'dataHoraChegada': [''], 
@@ -217,12 +220,15 @@ export class EstacionamentoDetailComponent<T extends GenericModel> implements On
 
                 this._estacionamentoService.save(this.model).subscribe(res => {
                     this.limpar();
-                    
+                    this._messages.success("Registro Salvo com sucesso!");
                     if (res != null ){
                         this._estacionamentoService.findOne(Number(res)).subscribe(model => {
                             this.model = model;
-                            this._messages.template("Valor a ser cobrado : "  + this.model.valor   +
-                                                    "  \n Tempo de permanência: "  + this.model.tempoPermanencia);
+                            if (this.model.valor != null){
+                                this._messages.template("Valor a ser cobrado : "  + this.model.valor   +
+                                "  \n Tempo de permanência: "  + this.model.tempoPermanencia);
+                            }
+                          
                         });
 
                     }
@@ -232,6 +238,14 @@ export class EstacionamentoDetailComponent<T extends GenericModel> implements On
                 this._estacionamentoService.save(this.model).subscribe(res => {
                     this._messages.success("Registro alterado com sucesso!");
                     this.limpar();
+                    if (res != null ){
+                        this._estacionamentoService.findOne(Number(res)).subscribe(model => {
+                            this.model = model;
+                            this._messages.template("Valor a ser cobrado : "  + this.model.valor   +
+                                                    "  \n Tempo de permanência: "  + this.model.tempoPermanencia);
+                        });
+
+                    }
                 })
             }
         }
