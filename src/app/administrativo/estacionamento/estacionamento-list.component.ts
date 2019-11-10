@@ -31,9 +31,11 @@ export class EstacionamentoListComponent implements OnInit {
     ngOnInit() {
 
         this.cols = [
-            { field: 'patioDescricao', header: 'Pátio', style: { 'width': '40%', 'text-align': 'left' }, type: 'string' },
-            { field: 'veiculoModelo', header: 'Veículo', style: { 'width': '40%', 'text-align': 'left' }, type: 'string' },
-            { field: 'clienteNome', header: 'Cliente', style: { 'width': '20%', 'text-align': 'left', type: 'string' } }
+            { field: 'patioDescricao', header: 'Pátio', style: { 'width': '30%', 'text-align': 'left' }, type: 'string' },
+            { field: 'veiculoModelo', header: 'Veículo', style: { 'width': '30%', 'text-align': 'left' }, type: 'string' },
+            { field: 'clienteNome', header: 'Cliente', style: { 'width': '20%', 'text-align': 'left', type: 'string' } },
+            { field: 'tempoPermanencia', header: 'Tempo', style: { 'width': '8%', 'text-align': 'left', type: 'string' } },
+            {field:  'valor',             header: 'Valor',   style:{'width':'12%','text-align':'right'},  type:'number'} 
         ];
         document.getElementById('pesquisa').focus();
     }

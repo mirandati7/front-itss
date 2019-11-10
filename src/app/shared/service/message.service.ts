@@ -24,4 +24,10 @@ export class MessageService {
         this.messages = [];
         this.messages.push({severity: 'error', summary: 'Exclusão', detail: message});
     }
+
+    public template(message: string) {
+        this.messages = [];
+        this.messages.push({severity: 'info', summary: 'Informação', detail: message});
+    }
+
 }

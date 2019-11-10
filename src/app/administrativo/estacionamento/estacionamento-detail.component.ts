@@ -1,4 +1,3 @@
-
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -217,8 +216,16 @@ export class EstacionamentoDetailComponent<T extends GenericModel> implements On
             if (this.model.id == 0 || this.model.id == null) {
 
                 this._estacionamentoService.save(this.model).subscribe(res => {
-                    this._messages.success("Registro salvo com sucesso!  " );
                     this.limpar();
+                    
+                    if (res != null ){
+                        this._estacionamentoService.findOne(Number(res)).subscribe(model => {
+                            this.model = model;
+                            this._messages.template("Valor a ser cobrado : "  + this.model.valor   +
+                                                    "  \n Tempo de permanência: "  + this.model.tempoPermanencia);
+                        });
+
+                    }
                 })
             }
             else {

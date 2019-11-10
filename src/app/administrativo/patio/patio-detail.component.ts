@@ -20,7 +20,6 @@ export class PatioDetailComponent<T extends GenericModel> implements OnInit {
 
     public id: string;
     apiEndPointUpload = this._patioService._endpoint;
-    public cpfValido:any;
 
     breadcrumb: BreadcrumbModel = new BreadcrumbModel("Administrativo", "Pátios", "Cadastro");
     pt_BR: any;

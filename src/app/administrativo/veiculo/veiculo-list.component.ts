@@ -33,7 +33,7 @@ export class VeiculoListComponent implements OnInit {
         this.cols = [                                
                 {field: 'placa',     header: 'Placa',  style:{'width':'40%','text-align':'left'},  type:'string'},
                 {field: 'modelo', header: 'Modelo', style:{'width':'40%','text-align':'left'},  type:'string'},           
-                {field: 'cor',      header: 'cor',   style:{'width':'20%','text-align':'left',   type:'string'}}            
+                {field: 'cor',      header: 'Cor',   style:{'width':'20%','text-align':'left',   type:'string'}}            
         ];
         document.getElementById('pesquisa').focus();
     }

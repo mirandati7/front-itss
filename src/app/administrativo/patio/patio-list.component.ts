@@ -31,9 +31,9 @@ export class PatioListComponent implements OnInit {
     ngOnInit() {
 
         this.cols = [                                
-                {field: 'descricao',     header: 'Descrição',  style:{'width':'40%','text-align':'left'},  type:'string'},
-                {field: 'numeroVagas',   header: 'Vagas', style:{'width':'40%','text-align':'left'},  type:'number'},           
-                {field: 'taxaHora',      header: 'Taxa Hora',   style:{'width':'20%','text-align':'left',   type:'number'}}            
+                {field: 'descricao',     header: 'Descrição',   style:{'width':'40%','text-align':'left'},  type:'string'},
+                {field: 'numeroVagas',   header: 'Vagas',       style:{'width':'40%','text-align':'left'},  type:'string'},           
+                {field: 'taxaHora',      header: 'Taxa Hora',   style:{'width':'20%','text-align':'right'},  type:'number'}            
         ];
         document.getElementById('pesquisa').focus();
     }

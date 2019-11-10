@@ -223,7 +223,7 @@ p-calendar.ng-invalid >.ui-calendar.ui-calendar-w-btn input {
 
 .ui-paginator .ui-paginator-page.ui-state-active{
   border-color: #3973cd;
-  background: linear-gradient(to bottom, #3d7fdb 1%,#487cc4 13%,#3470d1 29%,#2557ce 51%,#214aba 73%,#1146af 81%,#1146af 86%,#1146af 100%) !important;
+  background: #007bff !important;
   color: white !important;
 }
 
