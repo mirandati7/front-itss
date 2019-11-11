@@ -2,9 +2,11 @@ Introdução
 ============
 
 **ITSS** Aplicação esta hospedada para testes.
-Usuário : itss
-Senha   : password
+**Endereço para ser acessado :** http://itss.mr7tecnologia.com.br
+**Usuário** : itss
+**Senha**   : password
 
+**Clique no link abaixo**
 **Preview on [ITSS](http://itss.mr7tecnologia.com.br/)**
 
 Instalação
