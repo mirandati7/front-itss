@@ -16,8 +16,8 @@ import { MessageService } from '../shared/service/message.service';
     ]
 }) 
 export class LoginComponent {
-
-    public loginModel: {} = {};
+  
+    public loginModel: any = {};
     public statusLogin: boolean = true;
     private usuarioLogado: UsuarioLogado = new UsuarioLogado();
     public authToken;
@@ -35,7 +35,7 @@ export class LoginComponent {
         document.querySelector('body').classList.add('backLogin');
     }
 
-    private logar() {
+    public logar() {
         this._authService.authenticate(this.loginModel).subscribe(res => {
             //this.authToken = res.data;
             this.authToken = res.token;
